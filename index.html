@@ -4,6 +4,41 @@
     <title>WEB1 - Welcome</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <script>
+    var Links = {
+      setColor:function(color){
+        var as = document.getElementsByTagName('a');
+
+        for(var i=0; i<as.length; i++){
+          as[i].style.color = color;
+        }
+      }
+    }
+
+    var Body = {
+      setColor:function(color){
+          document.querySelector('body').style.color=color;
+      },
+      setBackgroundColor:function(color){
+          document.querySelector('body').style.backgroundColor=color;
+      }
+    }
+    function nightDayHandler(self){
+      if(self.value === 'night'){
+        Body.setBackgroundColor('black');
+        Body.setColor('white');
+
+        Links.setColor('yellow');
+        self.value = 'day';
+      } else {
+        Body.setBackgroundColor('white');
+        Body.setColor('black');
+
+        Links.setColor('black');
+        self.value = 'night';
+      }
+    }
+    </script>
   </head>
   <body>
     <h1><a href="index.html">로스트아크</a></h1>
@@ -12,20 +47,7 @@
       <ol>
         <div id = "inputButton">
           <input type= "button" value= "night" onclick= "
-            document.querySelector('body').style.backgroundColor='black';
-            document.querySelector('body').style.color='white';
-            var as = document.getElementsByTagName('a');
-            for(var i=0; i<as.length; i++){
-              as[i].style.color = 'white';
-            }
-          ">
-          <input type= "button" value= "day" onclick= "
-            document.querySelector('body').style.backgroundColor='white';
-            document.querySelector('body').style.color='black';
-            var as = document.getElementsByTagName('a');
-            for(var i=0; i<as.length; i++){
-              as[i].style.color = 'black';
-            }
+            nightDayHandler(this);
           ">
         </div>
         <li><a href="1.html">로스트아크</a></li>
@@ -37,6 +59,7 @@
         <p>
           이 공간은 로스트아크의 기초적인 설명을 위해 만들어진 사이트입니다.
         </p>
+
       </div>
     </div>
 

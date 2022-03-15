@@ -4,6 +4,41 @@
     <title>WEB1 - 스토브</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <script>
+    var Links = {
+      setColor:function(color){
+        var as = document.getElementsByTagName('a');
+
+        for(var i=0; i<as.length; i++){
+          as[i].style.color = color;
+        }
+      }
+    }
+
+    var Body = {
+      setColor:function(color){
+          document.querySelector('body').style.color=color;
+      },
+      setBackgroundColor:function(color){
+          document.querySelector('body').style.backgroundColor=color;
+      }
+    }
+    function nightDayHandler(self){
+      if(self.value === 'night'){
+        Body.setBackgroundColor('black');
+        Body.setColor('white');
+
+        Links.setColor('yellow');
+        self.value = 'day';
+      } else {
+        Body.setBackgroundColor('white');
+        Body.setColor('black');
+
+        Links.setColor('black');
+        self.value = 'night';
+      }
+    }
+    </script>
   </head>
   <body>
     <h1><a href="index.html">로스트아크</a></h1>
@@ -11,21 +46,8 @@
     <div id = "grid">
       <ol>
         <div id = "inputButton">
-          <input type= "button" value= "night" onclick= "
-            document.querySelector('body').style.backgroundColor='black';
-            document.querySelector('body').style.color='white';
-            var as = document.getElementsByTagName('a');
-            for(var i=0; i<as.length; i++){
-              as[i].style.color = 'white';
-            }
-          ">
-          <input type= "button" value= "day" onclick= "
-            document.querySelector('body').style.backgroundColor='white';
-            document.querySelector('body').style.color='black';
-            var as = document.getElementsByTagName('a');
-            for(var i=0; i<as.length; i++){
-              as[i].style.color = 'black';
-            }
+          <input id = "ada" type= "button" value= "night" onclick= "
+            nightDayHandler(this);
           ">
         </div>
         <li><a href="1.html">로스트아크</a></li>
